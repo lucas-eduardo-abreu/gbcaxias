@@ -167,12 +167,12 @@ nav.scrolled{background:rgba(10,10,10,.97);border-bottom:1px solid rgba(200,16,4
 
 .sg-wrap{overflow-x:auto;border-radius:8px;border:1px solid rgba(255,255,255,.07)}
 
-.sg-head{display:grid;grid-template-columns:72px repeat(5,1fr) 100px;background:var(--red)}
-.sg-time-col{padding:14px 0}
+.sg-head{display:grid;grid-template-columns:repeat(7,minmax(160px,1fr));background:var(--red)}
+.sg-time-col{padding:14px 10px;text-align:center;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.6)}
 .sg-day{padding:14px 10px;text-align:center;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.9);border-left:1px solid rgba(255,255,255,.15)}
 .sg-sab{background:rgba(0,0,0,.15)}
 
-.sg-row{display:grid;grid-template-columns:72px repeat(5,1fr) 100px;border-top:1px solid rgba(255,255,255,.05);transition:background .2s}
+.sg-row{display:grid;grid-template-columns:repeat(7,minmax(160px,1fr));border-top:1px solid rgba(255,255,255,.05);transition:background .2s}
 .sg-row:hover{background:rgba(255,255,255,.02)}
 
 .sg-time{display:flex;align-items:flex-start;justify-content:center;padding:14px 6px;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);letter-spacing:1px;line-height:1;padding-top:16px;background:rgba(200,16,46,.05);border-right:1px solid rgba(200,16,46,.15)}
@@ -185,7 +185,7 @@ nav.scrolled{background:rgba(10,10,10,.97);border-bottom:1px solid rgba(200,16,4
 
 .sc{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:4px;border-left:3px solid transparent}
 .sc-tag{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;flex-shrink:0;line-height:1}
-.sc-desc{font-size:11px;color:rgba(255,255,255,.55);font-weight:400;line-height:1.2;letter-spacing:.3px}
+.sc-desc{font-size:11px;color:rgba(255,255,255,.55);font-weight:400;line-height:1.2;letter-spacing:.3px;white-space:nowrap}
 
 .sc-gb1{background:rgba(0,112,192,.14);border-left-color:#0070C0}
 .sc-gb1 .sc-tag{color:#4faee0}
@@ -278,5 +278,6 @@ footer{background:var(--black);border-top:1px solid rgba(200,16,46,.15);padding:
   .about-grid,.location-grid,.values-content{grid-template-columns:1fr;gap:40px}
   .programs-grid{grid-template-columns:1fr} .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
   .stats-inner{flex-wrap:wrap} .stat-item{flex:none;width:50%}
-  .sched-outer{margin:0 -24px;padding:0 24px}
+  .sched-container{padding:0}
+  .sg-wrap{border-radius:0;border-left:none;border-right:none;margin:0 -24px}
 }
