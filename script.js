@@ -1,32 +1,34 @@
-// Custom cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
+// Custom cursor — skip entirely on touch/coarse-pointer devices
+if (!window.matchMedia('(pointer: coarse)').matches) {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-});
-
-(function loop() {
-  rx += (mx - rx) * .12;
-  ry += (my - ry) * .12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-  requestAnimationFrame(loop);
-})();
-
-document.querySelectorAll('a,button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '24px'; cursor.style.height = '24px';
-    ring.style.width = '60px'; ring.style.height = '60px';
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
   });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '12px'; cursor.style.height = '12px';
-    ring.style.width = '40px'; ring.style.height = '40px';
+
+  (function loop() {
+    rx += (mx - rx) * .12;
+    ry += (my - ry) * .12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '24px'; cursor.style.height = '24px';
+      ring.style.width = '60px'; ring.style.height = '60px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px'; cursor.style.height = '12px';
+      ring.style.width = '40px'; ring.style.height = '40px';
+    });
   });
-});
+}
 
 // Navbar scroll effect
 window.addEventListener('scroll', () =>
@@ -57,3 +59,9 @@ ham.addEventListener('click', () => toggleMenu(!ham.classList.contains('open')))
 navOverlay.addEventListener('click', () => toggleMenu(false));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+
+// WhatsApp number — single source of truth
+const WA_NUMBER = document.body.dataset.waNumber || '5554996333535';
+document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+  a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + WA_NUMBER);
+});
